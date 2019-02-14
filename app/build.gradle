@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        applicationId "com.rx.david"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        // 添加如下配置就OK了 - 解决annotation问题
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        //使用JAVA8语法解析
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["support-v4"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
+
+    // CommonAdapter(列表统一adapter、支持recyclerview、listview、gridView等)
+    implementation rootProject.ext.dependencies["BRVAH"]
+    // 图片加载
+    //noinspection GradleDependency
+    implementation rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    // 注解框架
+    implementation rootProject.ext.dependencies["butterknife"]
+    //RxJava & RxAndroid
+    implementation rootProject.ext.dependencies["RxJava"]
+    implementation rootProject.ext.dependencies["RxAndroid"]
+    //okhttp3 & okio
+    implementation rootProject.ext.dependencies["okhttp3"]
+    implementation rootProject.ext.dependencies["okio"]
+    //retrofit2
+    implementation rootProject.ext.dependencies["retrofit2-core"]
+    implementation rootProject.ext.dependencies["retrofit2-gson"]
+    implementation rootProject.ext.dependencies["retrofit2-adapter"]
+    // logger日志
+    implementation rootProject.ext.dependencies["logger"]
+}

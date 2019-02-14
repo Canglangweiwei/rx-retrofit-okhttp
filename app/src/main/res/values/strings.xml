@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HttpDemo</string>
+    <string name="poor_network">网络连接失败，请检查网络</string>
+</resources>
