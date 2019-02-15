@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity
      * 初始化页面
      */
     private void initview() {
+        // 初始化刷新控件
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light);
+        mSwipeRefreshLayout.setDistanceToTriggerSync(400);
         // 设置adapter
         mListAdapter = new BookListAdapter();
         recyclerview.setAdapter(mListAdapter);
