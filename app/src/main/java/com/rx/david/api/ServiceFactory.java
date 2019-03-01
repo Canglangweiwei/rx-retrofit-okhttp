@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -53,28 +54,28 @@ public class ServiceFactory {
                             .addNetworkInterceptor(RESPONSE_INTERCEPTOR)
                             .addInterceptor(logInterceptor)
                             // 添加公共请求头
-//                            .addInterceptor(chain -> {
-//                                Request request = chain.request()
-//                                        .newBuilder()
-//                                        .addHeader("Content-Type", "application/json")
-//                                        .addHeader("X-Parse-Application-Id", BaseConstant.X_PARSE_APPLICATION_ID)
-//                                        .build();
-//                                return chain.proceed(request);
-//                            })
-//                            // 添加公共参数
-//                            .addInterceptor(chain -> {
-//                                Request original = chain.request();
-//                                HttpUrl originalHttpUrl = original.url();
-//
-//                                HttpUrl url = originalHttpUrl.newBuilder()
-//                                        .addQueryParameter("language", "cn")
-//                                        .build();
-//
-//                                // Request customization: add request headers
-//                                Request.Builder requestBuilder = original.newBuilder()
-//                                        .url(url);
-//                                return chain.proceed(requestBuilder.build());
-//                            })
+                            .addInterceptor(chain -> {
+                                Request request = chain.request()
+                                        .newBuilder()
+                                        .addHeader("Content-Type", "application/json")
+                                        .addHeader("X-Parse-Application-Id", BaseConstant.X_PARSE_APPLICATION_ID)
+                                        .build();
+                                return chain.proceed(request);
+                            })
+                            // 添加公共参数
+                            .addInterceptor(chain -> {
+                                Request original = chain.request();
+                                HttpUrl originalHttpUrl = original.url();
+
+                                HttpUrl url = originalHttpUrl.newBuilder()
+                                        .addQueryParameter("language", "cn")
+                                        .build();
+
+                                // Request customization: add request headers
+                                Request.Builder requestBuilder = original.newBuilder()
+                                        .url(url);
+                                return chain.proceed(requestBuilder.build());
+                            })
                             .build();
                 }
             }

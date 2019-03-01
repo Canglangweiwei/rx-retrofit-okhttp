@@ -7,9 +7,7 @@ import com.rx.david.api.BaseConstant;
 import com.rx.david.api.ServiceFactory;
 import com.rx.david.api.model.IGesooModel;
 import com.rx.david.api.service.IGesooService;
-import com.rx.david.bean.BaseModel;
 import com.rx.david.bean.BaseResponse;
-import com.rx.david.bean.HomeModulesBean;
 import com.rx.david.bean.HomeResultBean;
 
 import java.net.UnknownHostException;
@@ -27,7 +25,7 @@ public class GesooModelImpl implements IGesooModel {
     @Override
     public void loadHomeData(int maxType, ApiCompleteListener listener) {
         IGesooService iGesooService = ServiceFactory.createService(BaseConstant.BASE_URL, IGesooService.class);
-        iGesooService.loadHomeData(maxType)
+        iGesooService.loadHomeData(maxType, 33.9901455, -117.9233364, "cn")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Response<HomeResultBean>>() {

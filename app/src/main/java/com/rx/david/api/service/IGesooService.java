@@ -15,5 +15,8 @@ public interface IGesooService {
      */
     @FormUrlEncoded
     @POST("storeGetHome")
-    Observable<Response<HomeResultBean>> loadHomeData(@Field("maxType") int maxType);
+    Observable<Response<HomeResultBean>> loadHomeData(@Field("maxType") int maxType,
+                                                      @Field("latitude") double latitude,
+                                                      @Field("longitude") double longitude,
+                                                      @Field("language") String language);
 }

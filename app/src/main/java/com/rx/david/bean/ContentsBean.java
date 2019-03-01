@@ -48,6 +48,8 @@ public class ContentsBean implements Serializable {
     private double latitude;
     // 经度
     private double longitude;
+    // 距离
+    private String distance;
     // 地址
     private String address;
     // 城市
@@ -227,6 +229,14 @@ public class ContentsBean implements Serializable {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 
     public String getAddress() {
