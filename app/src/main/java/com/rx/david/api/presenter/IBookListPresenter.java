@@ -8,13 +8,13 @@ package com.rx.david.api.presenter;
  */
 public interface IBookListPresenter {
 
-    /**
-     * 加载图书列表
-     */
-    void loadBooks(String q, String tag, int start, int count, String fields);
+   /**
+    * 加载图书列表
+    */
+   void loadBooks(String q, String tag, int start, int count, String fields);
 
-    /**
-     * 取消加载
-     */
-    void cancelLoading();
+   /**
+    * 取消加载
+    */
+   void cancelLoading();
 }

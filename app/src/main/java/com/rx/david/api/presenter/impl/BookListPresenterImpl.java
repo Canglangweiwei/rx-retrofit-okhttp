@@ -19,62 +19,62 @@ import com.rx.david.util.NetworkUtils;
  */
 public class BookListPresenterImpl implements IBookListPresenter, ApiCompleteListener {
 
-    private IBaseView iBaseView;
-    private IBookListModel mBookListModel;
+   private IBaseView iBaseView;
+   private IBookListModel mBookListModel;
 
-    public BookListPresenterImpl(IBaseView view) {
-        iBaseView = view;
-        mBookListModel = new BookListModelImpl();
-    }
+   public BookListPresenterImpl(IBaseView view) {
+      iBaseView = view;
+      mBookListModel = new BookListModelImpl();
+   }
 
-    /**
-     * 加载数据
-     */
-    @Override
-    public void loadBooks(String q, String tag, int start, int count, String fields) {
-        if (!NetworkUtils.isConnected(BaseApplication.getApplication())) {
-            iBaseView.showMessage(BaseApplication.getApplication().getString(R.string.poor_network));
-            iBaseView.hideProgress();
-            return;
-        }
-        iBaseView.showProgress();
-        mBookListModel.loadBookList(q, tag, start, count, fields, this);
-    }
+   /**
+    * 加载数据
+    */
+   @Override
+   public void loadBooks(String q, String tag, int start, int count, String fields) {
+      if (!NetworkUtils.isConnected(BaseApplication.getApplication())) {
+         iBaseView.showMessage(BaseApplication.getApplication().getString(R.string.poor_network));
+         iBaseView.hideProgress();
+         return;
+      }
+      iBaseView.showProgress();
+      mBookListModel.loadBookList(q, tag, start, count, fields, this);
+   }
 
-    @Override
-    public void cancelLoading() {
-        mBookListModel.cancelLoading();
-    }
+   @Override
+   public void cancelLoading() {
+      mBookListModel.cancelLoading();
+   }
 
-    /**
-     * 访问接口成功
-     *
-     * @param result 返回结果
-     */
-    @Override
-    public void onComplected(Object result) {
-        if (result instanceof BookListResponse) {
-            int index = ((BookListResponse) result).getStart();
-            if (index == 0) {
-                iBaseView.refreshData(result);
-            } else {
-                iBaseView.addData(result);
-            }
-            iBaseView.hideProgress();
-        }
-    }
+   /**
+    * 访问接口成功
+    *
+    * @param result 返回结果
+    */
+   @Override
+   public void onComplected(Object result) {
+      if (result instanceof BookListResponse) {
+         int index = ((BookListResponse) result).getStart();
+         if (index == 0) {
+            iBaseView.refreshData(result);
+         } else {
+            iBaseView.addData(result);
+         }
+         iBaseView.hideProgress();
+      }
+   }
 
-    /**
-     * 请求失败
-     *
-     * @param msg 错误信息
-     */
-    @Override
-    public void onFailed(BaseResponse msg) {
-        iBaseView.hideProgress();
-        if (msg == null) {
-            return;
-        }
-        iBaseView.showMessage(msg.getMsg());
-    }
+   /**
+    * 请求失败
+    *
+    * @param msg 错误信息
+    */
+   @Override
+   public void onFailed(BaseResponse msg) {
+      iBaseView.hideProgress();
+      if (msg == null) {
+         return;
+      }
+      iBaseView.showMessage(msg.getMsg());
+   }
 }

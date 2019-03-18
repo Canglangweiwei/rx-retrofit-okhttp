@@ -5,31 +5,31 @@ package com.rx.david.bean;
  */
 public class BaseResponse {
 
-    private int code;
-    private String msg;
+   private int code;
+   private String msg;
 
-    public BaseResponse() {
-        super();
-    }
+   public BaseResponse() {
+      super();
+   }
 
-    public BaseResponse(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
+   public BaseResponse(int code, String msg) {
+      this.code = code;
+      this.msg = msg;
+   }
 
-    public String getMsg() {
-        return msg;
-    }
+   public String getMsg() {
+      return msg;
+   }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
+   public void setMsg(String msg) {
+      this.msg = msg;
+   }
 
-    public int getCode() {
-        return code;
-    }
+   public int getCode() {
+      return code;
+   }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
+   public void setCode(int code) {
+      this.code = code;
+   }
 }

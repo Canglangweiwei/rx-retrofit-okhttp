@@ -11,48 +11,48 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class BookListResponse extends BaseResponse {
 
-    private int count;
-    private int start;
-    private int total;
-    private List<BookInfoResponse> books;
+   private int count;
+   private int start;
+   private int total;
+   private List<BookInfoResponse> books;
 
-    public BookListResponse() {
-        super();
-    }
+   public BookListResponse() {
+      super();
+   }
 
-    public BookListResponse(int code, String msg) {
-        super(code, msg);
-    }
+   public BookListResponse(int code, String msg) {
+      super(code, msg);
+   }
 
-    public int getCount() {
-        return count;
-    }
+   public int getCount() {
+      return count;
+   }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
+   public void setCount(int count) {
+      this.count = count;
+   }
 
-    public int getStart() {
-        return start;
-    }
+   public int getStart() {
+      return start;
+   }
 
-    public void setStart(int start) {
-        this.start = start;
-    }
+   public void setStart(int start) {
+      this.start = start;
+   }
 
-    public int getTotal() {
-        return total;
-    }
+   public int getTotal() {
+      return total;
+   }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
+   public void setTotal(int total) {
+      this.total = total;
+   }
 
-    public List<BookInfoResponse> getBooks() {
-        return books;
-    }
+   public List<BookInfoResponse> getBooks() {
+      return books;
+   }
 
-    public void setBooks(List<BookInfoResponse> books) {
-        this.books = books;
-    }
+   public void setBooks(List<BookInfoResponse> books) {
+      this.books = books;
+   }
 }

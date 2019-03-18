@@ -9,8 +9,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class HttpLogger implements HttpLoggingInterceptor.Logger {
 
-    @Override
-    public void log(String message) {
-        Log.d("最终请求结果：", message);
-    }
+   @Override
+   public void log(String message) {
+      Log.d("最终请求结果：", message);
+   }
 }

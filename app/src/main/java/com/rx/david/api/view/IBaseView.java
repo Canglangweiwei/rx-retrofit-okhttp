@@ -8,13 +8,13 @@ package com.rx.david.api.view;
  */
 public interface IBaseView {
 
-    void showMessage(String msg);
+   void showMessage(String msg);
 
-    void showProgress();
+   void showProgress();
 
-    void hideProgress();
+   void hideProgress();
 
-    void refreshData(Object result);
+   void refreshData(Object result);
 
-    void addData(Object result);
+   void addData(Object result);
 }
